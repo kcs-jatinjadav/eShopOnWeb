@@ -23,4 +23,4 @@ jobs:
 
     - name: Deploy to Azure App Service
       run: |
-        az webapp up --name anc-test-wa-github-01 --resource-group ANC-NP-RG-Webapp-01 --plan ASP-ANCNPRGWebapp01-81fb --sku B1 --subscription VCC-WebApp-NP --runtime "DOTNET|8"
+        az webapp up --name anc-test-wa-github-01 --resource-group ANC-NP-RG-Webapp-01 --plan anc-test-ASP-github-01 --sku B1 --subscription VCC-WebApp-NP --runtime "DOTNET|8"
