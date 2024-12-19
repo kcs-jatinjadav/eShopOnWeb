@@ -21,17 +21,31 @@ jobs:
     
     - name: Test with dotnet
       run: dotnet test ./eShopOnWeb.sln --configuration Release
-      
-    #- name: Install azure-cli
-      #uses: pietrobolcato/install-azure-cli-action@v1.0.1
-
-    #- name: Azure Login with User Credentials
-      #run: |
-        #az login --use-device-code  # This allows interactive login via a device code
+    - name: Publish .NET app
+      run: |
+        dotnet publish ./eShopOnWeb.sln --configuration Release --output ./publish
+    
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v3.1.0
       with:
-        path: /home/runner/work/eShopOnWeb/eShopOnWeb/tests/PublicApiIntegrationTests/bin/Release/net8.0/**        
+        path: ./publish/**
+
+    - name: Install azure-cli
+      uses: pietrobolcato/install-azure-cli-action@v1.0.1
+
+    - name: Azure Login with User Credentials
+      run: |
+        az login --use-device-code  # This allows interactive login via a device code  
+    # Deploy to Azure App Service
+    - name: Deploy to Azure App Service
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: anc-test-wa-github-01   # Replace with your Azure App Service name
+        resource-group: ANC-NP-RG-Webapp-01  # Replace with your Azure resource group
+        publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}  # Azure publish profile secret
+        package: ./publish      
+      
+   
 
     #- name: Deploy to Azure App Service
       #run: |
