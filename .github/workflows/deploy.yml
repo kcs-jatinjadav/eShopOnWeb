@@ -28,6 +28,10 @@ jobs:
     #- name: Azure Login with User Credentials
       #run: |
         #az login --use-device-code  # This allows interactive login via a device code
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        path: /home/runner/work/eShopOnWeb/eShopOnWeb/tests/PublicApiIntegrationTests/bin/Release/net8.0/**        
 
     #- name: Deploy to Azure App Service
       #run: |
