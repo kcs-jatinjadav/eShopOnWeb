@@ -22,13 +22,13 @@ jobs:
     - name: Test with dotnet
       run: dotnet test ./eShopOnWeb.sln --configuration Release
     - name: Publish PublicApi Project
-      run: dotnet publish ./eShopOnWeb/src/PublicApi/PublicApi.csproj --configuration Release --output ./publish/PublicApi
+      run: dotnet publish ./src/PublicApi/PublicApi.csproj --configuration Release --output ./publish/PublicApi
 
     - name: Publish Web Project
-      run: dotnet publish ./eShopOnWeb/src/Web/Web.csproj --configuration Release --output ./publish/Web
+      run: dotnet publish ./src/Web/Web.csproj --configuration Release --output ./publish/Web
 
     - name: Publish Functional Tests
-      run: dotnet publish ./eShopOnWeb/tests/FunctionalTests/FunctionalTests.csproj --configuration Release --output ./publish/FunctionalTests
+      run: dotnet publish ./tests/FunctionalTests/FunctionalTests.csproj --configuration Release --output ./publish/FunctionalTests
 
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v3.1.0
