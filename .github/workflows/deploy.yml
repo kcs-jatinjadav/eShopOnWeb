@@ -23,12 +23,12 @@ jobs:
       run: dotnet test ./eShopOnWeb.sln --configuration Release
     - name: Publish .NET app
       run: |
-        dotnet publish ./eShopOnWeb.sln --configuration Release --output ./publish/PublicApi
+        dotnet publish ./eShopOnWeb.sln --configuration Release --output ./PublicApi
     
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v3.1.0
       with:
-        path: ./publish/**
+        path: ./PublicApi/**
 
     - name: Install azure-cli
       uses: pietrobolcato/install-azure-cli-action@v1.0.1
@@ -43,7 +43,7 @@ jobs:
         app-name: anc-test-wa-github-01   # Replace with your Azure App Service name
         resource-group: ANC-NP-RG-Webapp-01  # Replace with your Azure resource group
         publish-profile: <publishData><publishProfile profileName="anc-test-wa-github-01 - Web Deploy" publishMethod="MSDeploy" publishUrl="anc-test-wa-github-01.scm.azurewebsites.net:443" msdeploySite="anc-test-wa-github-01" userName="$anc-test-wa-github-01" userPWD="x5N7Yk6wT39gFbyCTwsGhgZQqurQp8ku5XJtCuXnaj63bK9H0lZz47PEHkZz" destinationAppUrl="https://anc-test-wa-github-01.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="https://portal.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="anc-test-wa-github-01 - FTP" publishMethod="FTP" publishUrl="ftps://waws-prod-ch1-065.ftp.azurewebsites.windows.net/site/wwwroot" ftpPassiveMode="True" userName="anc-test-wa-github-01\$anc-test-wa-github-01" userPWD="x5N7Yk6wT39gFbyCTwsGhgZQqurQp8ku5XJtCuXnaj63bK9H0lZz47PEHkZz" destinationAppUrl="https://anc-test-wa-github-01.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="https://portal.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="anc-test-wa-github-01 - Zip Deploy" publishMethod="ZipDeploy" publishUrl="anc-test-wa-github-01.scm.azurewebsites.net:443" userName="$anc-test-wa-github-01" userPWD="x5N7Yk6wT39gFbyCTwsGhgZQqurQp8ku5XJtCuXnaj63bK9H0lZz47PEHkZz" destinationAppUrl="https://anc-test-wa-github-01.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="https://portal.azure.com" webSystem="WebSites"><databases /></publishProfile></publishData>
-        package: ./publish      
+        package: ./PublicApi      
       
    
 
