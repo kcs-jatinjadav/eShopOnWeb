@@ -27,9 +27,6 @@ jobs:
     - name: Publish Web Project
       run: dotnet publish ./src/Web/Web.csproj --configuration Release --output ./publish/Web
 
-    - name: Publish Functional Tests
-      run: dotnet publish ./tests/FunctionalTests/FunctionalTests.csproj --configuration Release --output ./publish/FunctionalTests
-
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v3.1.0
       with:
